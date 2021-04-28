@@ -1,0 +1,48 @@
+Requirements
+for Binary Upload Boom Clone 
+
+<> Live example:  https://binary-upload-boom.herokuapp.com/
+<> Solution code: https://github.com/100devs/binary-upload-boom
+<> RAP API: https://github.com/100devs/rap-names-express
+<> SUNDAY LOCAL-AUTH: https://github.com/100devs/todo-mvc-auth-local
+
+- offer user to log in/signup accounts
+-signup
+  - user inputs: -user name, -email, -password - confirm password
+- user homepage (profile)
+  - lists username, email
+  - "logout" or "return to feed" button
+  - add post:
+    title, caption (image comments), upload image, submit
+  - added pic show up on hompage
+- feed -- all user pictures (2 columns layout)
+- individual pic: 
+  - like it (heart symbol), -total likes
+  - if you own it, you can delete it (trash can symbol)
+  - "return to profile" button and "return to feed" button
+  - confirm that each pic has unique identifier on MongoDB
+-login
+  -email
+  -password
+  -"submit" button
+-------
+
+v0.001
+<-- BACK END -->
+make a todolist (something like  the rap API)
+  - common todolist page, see todos of other users
+  - ability like (button?) a todo
+use local authorization (todo-mvc-auth-local):
+    use hash via node packages: "passport": "^0.4.1" and "passport-local": "^1.0.0"
+    use sample /config/passport.js
+      https://github.com/100devs/todo-mvc-auth-local/blob/main/config/passport.js
+use hash to store passwords:
+  - use node package bcyrpt > https://www.npmjs.com/package/bcrypt
+    
+<-- FRONT END -->
+- produce HTML content in EJS format for 'views' files
+- CSS styles for each page stored in 'public'
+- JS events in 'public'
+
+
+now it works@
