@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
   password: String, 
 });
 
+// .pre creates a function that runs before the object is saved to the DB, in this case, it hashes the password entered by the user
 UserSchema.pre('save', function save(next) {
     const user = this;
     if (!user.isModified('password')) {
@@ -26,6 +27,8 @@ UserSchema.pre('save', function save(next) {
     })
 })
 
+
+// adds a comparePassword method to the UserSchema object, for authorizing logins
 UserSchema.methods.comparePassword = function comparePassword(
     candidatePassword,
     cb

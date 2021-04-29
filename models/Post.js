@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
+// Initializes a schema for new posts
 const PostSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+  },
+  image: {
+    type: String
   },
   caption: {
     type: String,
