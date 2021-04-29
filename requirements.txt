@@ -44,5 +44,6 @@ use hash to store passwords:
 - CSS styles for each page stored in 'public'
 - JS events in 'public'
 
+  - First Draft will be without images. Bare bones text before adding images. 
 
 now it works@
