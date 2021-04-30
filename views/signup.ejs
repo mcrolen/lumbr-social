@@ -1,6 +1,8 @@
 <!-- signup page, asks you to sign new info including user name, email, password twice (to confirm)-->
 <%- include('partials/header') -%>
     <main class="container">
+        <!-- container is required for bootstrap -->
+        <!-- Leon's class styles: col-6 is six columns across, mt-5 is margin-top , mb-3 is margin-bottom  -->
         <div class="row justify-content-center">
             <section class="col-6 mt-5">
                 <% if (locals.messages.errors) { %>
