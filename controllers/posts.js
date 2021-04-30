@@ -2,14 +2,24 @@
 const Post = require('../models/post')
 
 module.exports = {
-    getFeed: async (req, res) => {
+    getProfile: async (req, res) => {
         try {
-          const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-          res.render("feed.ejs", { posts: posts });
+          const posts = await Post.find({user: req.user.id}) // posts gets ../models/post proccesses using daisy chained methods
+          res.render("profile.ejs", { posts: posts, user: req.user }); // renders/outputs HMTL
         } catch (err) {
           console.log(err);
         }
       },
+
+    getFeed: async (req, res) => {
+        try {
+          const posts = await Post.find().sort({ createdAt: "desc" }).lean(); // posts gets ../models/post proccesses using daisy chained methods
+          res.render("feed.ejs", { posts: posts }); // renders/outputs HMTL
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      
     getPost: async (req,res)=>{
         console.log(req.user)
         try{
@@ -19,6 +29,7 @@ module.exports = {
             console.log(err)
         }
     },
+
     createPost: async (req, res)=>{
         try{
             await Post.create({
@@ -34,6 +45,7 @@ module.exports = {
             console.log(err)
         }
     },
+
     likePost: async (req, res)=>{
         try{
             await Post.findOneAndUpdate(
@@ -46,17 +58,7 @@ module.exports = {
             console.log(err)
         }
     },
-    // markUnlike: async (req, res)=>{
-    //     try{
-    //         await Post.findOneAndUpdate({_id:req.body.postIdFromJSFile},{
-    //             completed: false
-    //         })
-    //         console.log('Marked Incomplete')
-    //         res.json('Marked Incomplete')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
+
     deletePost: async (req, res)=>{
         console.log(req.params.id)
         try{
