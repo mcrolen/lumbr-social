@@ -1,8 +1,8 @@
 {
-  "name": "bum-or-bust",
+  "name": "lumbr-social",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.4.1",
@@ -19,10 +19,9 @@
     "passport-local": "^1.0.0",
     "validator": "^13.6.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node server",
+    "dev": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// sets the variable connectDB to our db secret
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.DB_STRING, {
