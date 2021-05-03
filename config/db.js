@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // sets the variable connectDB to our db secret
 const connectDB = async () => {
@@ -7,6 +7,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
+      useCreateIndex: true,
     });
 
     console.log(`MongoDB Connected: ${conn.connection.host}`);
