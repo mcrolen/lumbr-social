@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Initializes a schema for new posts
 const PostSchema = new mongoose.Schema({
@@ -7,7 +7,7 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
   image: {
-    type: String
+    type: String,
   },
   caption: {
     type: String,
@@ -19,7 +19,7 @@ const PostSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
   createdAt: {
     type: Date,
@@ -27,4 +27,4 @@ const PostSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = mongoose.model("Post", PostSchema);

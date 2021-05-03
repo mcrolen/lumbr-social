@@ -2,7 +2,8 @@
 
 <%- include('partials/header') -%>
 <div class="container">
-  <div class="row mt-5">
+    <!-- Leon's class styles: col-6 is six columns across, mt-5 is margin-top , mb-3 is margin-bottom  -->
+  <div class="row mt-5"> <!-- style: row with a margin-top size 5 -->
       <div class="col-6">
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
@@ -30,7 +31,7 @@
       </div>
       <div class="col-6">
         <ul class="row list-unstyled">
-        <% for(var i=0; i<posts.length; i++) {%>
+       <% for(var i=0; i<posts.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
             <a href="/post/<%= posts[i]._id%>">
               <img class="img-fluid" src="<%= posts[i].image%>">
