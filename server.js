@@ -23,10 +23,6 @@ require("./config/passport.js")(passport);
 // Connect to the database using db string in config folder
 connectDB();
 
-// Passport Middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
 // Static
 app.use(express.static("public"));
 
@@ -52,6 +48,10 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Use flash for errors
 app.use(flash());

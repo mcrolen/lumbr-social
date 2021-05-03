@@ -37,12 +37,12 @@ module.exports = {
       await Post.create({
         title: req.body.title,
         //image: ....
-        description: req.body.desc,
+        caption: req.body.caption,
         likes: 0,
-        userId: req.user.id,
+        user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/posts");
+      res.redirect("/profile");
     } catch (err) {
       console.log(err);
     }
@@ -51,11 +51,11 @@ module.exports = {
   likePost: async (req, res) => {
     try {
       await Post.findOneAndUpdate(
-        { _id: req.body.params.id },
+        { _id: req.params.id },
         { $inc: { likes: 1 } }
       );
       console.log("Added 1 Like");
-      res.json("Added 1 Like");
+      res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
