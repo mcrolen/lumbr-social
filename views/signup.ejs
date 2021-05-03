@@ -1,43 +1,83 @@
 <!-- signup page, asks you to sign new info including user name, email, password twice (to confirm)-->
 <%- include('partials/header') -%>
-    <main class="container">
-        <!-- container is required for bootstrap -->
-        <!-- Leon's class styles: col-6 is six columns across, mt-5 is margin-top , mb-3 is margin-bottom  -->
-        <div class="row justify-content-center">
-            <section class="col-6 mt-5">
-                <% if (locals.messages.errors) { %>
-                    <% messages.errors.forEach( el => { %>
-                        <div class="alert alert-danger"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <% if (locals.messages.info) { %>
-                    <% messages.info.forEach( el => { %>
-                        <div class="alert alert-info"><%= el.msg %></div>
-                    <% }) %>    
-                <% } %>
-                <form action="/signup" method="POST">
-                    <div class="mb-3">
-                        <label for="userName" class="form-label">User Name</label>
-                        <input type="text" class="form-control" id="userName" name="userName">
-                      </div>
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </section>
-        </div>
-    </main>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-warning">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=""/profile"">
+          <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          Lumbr Social
+        </a>
+          <span>Everyone is a winner!</span>
+      </div>
+    </nav>
+  </body>
 
+
+
+    <div
+    class="bg-image p-5 text-center shadow-1-strong rounded mb-100 text-black"
+    style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.jpg');
+    height: 100vh;">
+
+
+
+  <main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Register</div>
+                        <div class="card-body">
+                            <% if (locals.messages.errors) { %>
+                                <% messages.errors.forEach( el => { %>
+                                    <div class="alert alert-danger"><%= el.msg %></div>
+                                <% }) %>    
+                            <% } %>
+                            <% if (locals.messages.info) { %>
+                                <% messages.info.forEach( el => { %>
+                                    <div class="alert alert-info"><%= el.msg %></div>
+                                <% }) %>    
+                            <% } %>
+                            <form action="/signup" method="POST">
+                                <div class="form-group row">
+                                    <label for="userName" class="col-md-4 col-form-label text-md-right">UserName</label>
+                                    <div class="col-md-6">
+                                        <input type="text" id="userName" class="form-control" name="userName">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="exampleInputEmail1" class="col-md-4 col-form-label text-md-right">E-Mail</label>
+                                    <div class="col-md-6">
+                                        <input type="email" id="exampleInputEmail1" class="form-control" aria-describedby="emailHelp" name="email">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="password" class="form-control" name="password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="confirmPassword" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                                    <div class="col-md-6">
+                                        <input type="password" id="confirmPassword" class="form-control" name="confirmPassword">
+                                    </div>
+                                </div>
+
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-warning">
+                                        Register
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+  </main>
 <%- include('partials/footer') -%>
 <!-- -->
