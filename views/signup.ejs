@@ -1,19 +1,5 @@
 <!-- signup page, asks you to sign new info including user name, email, password twice (to confirm)-->
 <%- include('partials/header') -%>
-  </head>
-  <body>
-    <nav class="navbar navbar-light bg-warning">
-      <div class="container-fluid">
-        <a class="navbar-brand" href=""/profile"">
-          <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-          Lumbr Social
-        </a>
-          <span>Everyone is a winner!</span>
-      </div>
-    </nav>
-  </body>
-
-
 
     <div
     class="bg-image p-5 text-center shadow-1-strong rounded mb-100 text-black"
@@ -41,7 +27,7 @@
                             <% } %>
                             <form action="/signup" method="POST">
                                 <div class="form-group row">
-                                    <label for="userName" class="col-md-4 col-form-label text-md-right">UserName</label>
+                                    <label for="userName" class="col-md-4 col-form-label text-md-right">User Name</label>
                                     <div class="col-md-6">
                                         <input type="text" id="userName" class="form-control" name="userName">
                                     </div>
