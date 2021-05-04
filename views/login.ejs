@@ -2,49 +2,40 @@
 <%- include('partials/header') -%>
 
 <main class="container">
-  <div class="col-md-12">
-    <div class="modal-dialog" style="margin-bottom: 0">
-        <div class="panel-heading">
-          <h3 class="panel-title">Sign In</h3>
+  <div class="row justify-content-center">
+    <h3 class="row justify-content-center mt-5">Sign In</h3>
+    <section class="col-6 mt-5">
+      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
+      <div class="alert alert-danger"><%= el.msg %></div>
+      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
+      messages.info.forEach( el => { %>
+      <div class="alert alert-info"><%= el.msg %></div>
+      <% }) %> <% } %>
+      <form action="/login" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="email"
+          />
         </div>
-        <div class="panel-body">
-          <% if (locals.messages.errors) { %> <% messages.errors.forEach( el =>
-          { %>
-          <div class="alert alert-danger"><%= el.msg %></div>
-          <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-          messages.info.forEach( el => { %>
-          <div class="alert alert-info"><%= el.msg %></div>
-          <% }) %> <% } %>
-          <form action="/login" method="POST">
-            <div class="mb-3">
-              <!-- margin-bottom spacing size 3 -->
-              <label for="exampleInputEmail1" class="form-label"
-                >Email address</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                name="email"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label"
-                >Password</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="exampleInputPassword1"
-                name="password"
-              />
-            </div>
-            <button type="submit" class="btn btn-warning">Submit</button>
-          </form>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            name="password"
+          />
         </div>
-      </div>
-    </div>
+        <button type="submit" class="btn btn-warning">Submit</button>
+      </form>
+    </section>
   </div>
 </main>
 <%- include('partials/footer') -%>
