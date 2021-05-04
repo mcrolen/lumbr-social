@@ -1,4 +1,4 @@
-// https://github.com/100devs/todo-mvc-auth-local/blob/main/controllers/todos.js
+const cloudinary = require("../middleware/cloudinary.js");
 const Post = require("../models/Post");
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
 
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean(); // posts gets ../models/post proccesses using daisy chained methods
+      const posts = await Post.find().sort({ createdAt: "desc" }).lean(); // posts gets ../models/post processes using daisy chained methods
       res.render("feed.ejs", { posts: posts }); // renders/outputs HMTL
     } catch (err) {
       console.log(err);
@@ -34,9 +34,12 @@ module.exports = {
 
   createPost: async (req, res) => {
     try {
+      const result = await cloudinary.uploader.upload(req.file.path);
+
       await Post.create({
         title: req.body.title,
-        //image: ....
+        image: result.secure_url,
+        cloudinaryId: result.public_id,
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
@@ -64,11 +67,16 @@ module.exports = {
   deletePost: async (req, res) => {
     console.log(req.params.id);
     try {
-      await Post.findOneAndDelete({ _id: req.params.id });
+      // Find post using id
+      let post = await Post.findById({ _id: req.params.id });
+      // Delete image from cloudinary
+      await cloudinary.uploader.destroy(post.cloudinaryId);
+      // Delete the post from db
+      await Post.deleteOne({ _id: req.params.id });
       console.log("Deleted Post");
       res.redirect("/profile");
     } catch (err) {
-      console.log(err);
+      res.redirect("/profile");
     }
   },
 };

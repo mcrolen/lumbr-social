@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
 const passport = require("passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
@@ -23,11 +22,11 @@ require("./config/passport.js")(passport);
 // Connect to the database using db string in config folder
 connectDB();
 
-// Static
-app.use(express.static("public"));
-
 // Use EJS for the contents of views folder
 app.set("view engine", "ejs");
+
+// Static
+app.use(express.static("public"));
 
 // Using express built in magic for body parsing
 app.use(express.urlencoded({ extended: true }));
