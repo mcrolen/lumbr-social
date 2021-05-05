@@ -11,7 +11,7 @@
           action="/post/likePost/<%= post.id %>?_method=PUT"
           method="POST"
         >
-          <button class="btn btn-warning" fa fa-heart" type="submit"></button>
+          <button class="btn btn-warning fa fa-heart" type="submit"></button>
         </form>
         <h3 class="col-3">Likes: <%= post.likes %></h3>
         <%if(post.user == user.id){ %>
@@ -20,7 +20,7 @@
           method="POST"
           class="col-3"
         >
-          <button class="btn btn-warning" fa fa-trash" type="submit"></button>
+          <button class="btn btn-warning fa fa-trash" type="submit"></button>
         </form>
         <%}%>
       </div>
